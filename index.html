@@ -1,41 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/Practice Projects/Login page/login.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="login.css" />
-    <title>Login</title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <form action="">
-        <h1>Login</h1>
-        <div class="email-en">
-          <input type="text" placeholder="Email" required />
-          <i class="bx bx-envelope"></i>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function () {
+  var stored = localStorage.getItem('auth-ui-theme');
+  var prefersLight = false;
+  try { prefersLight = matchMedia('(prefers-color-scheme: light)').matches; } catch (e) {}
+  document.documentElement.dataset.theme = stored || (prefersLight ? 'light' : 'dark');
+})();
+</script>
+</head>
+<body>
+
+<div class="theme-toggle-wrap">
+  <span class="theme-toggle-label">DARK</span>
+  <button type="button" class="theme-toggle" aria-label="Toggle light/dark theme">
+    <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+  </button>
+  <span class="theme-toggle-label">LIGHT</span>
+</div>
+
+<main class="scene">
+  <div class="card-frame">
+    <div class="card">
+      <p class="sys-line"><span class="dot"></span>SIGN IN</p>
+      <h1 class="card-title">Welcome back</h1>
+      <p class="card-subtitle">Sign in to continue</p>
+
+      <form class="auth-form" novalidate>
+        <label class="field">
+          <span class="field-label">Email</span>
+          <span class="field-input-wrap">
+            <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11Z"/><path d="m4 6.5 8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <input type="email" name="email" placeholder="you@example.com" required>
+          </span>
+          <span class="field-error"></span>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Password</span>
+          <span class="field-input-wrap">
+            <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4.5" y="10.5" width="15" height="9.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke-linecap="round"/></svg>
+            <input type="password" name="password" placeholder="••••••••" required minlength="6">
+            <button type="button" class="field-toggle" aria-label="Show password" aria-pressed="false"></button>
+          </span>
+          <span class="field-error"></span>
+        </label>
+
+        <div class="field-row">
+          <label class="checkbox"><input type="checkbox"> Remember me</label>
+          <a href="#" class="link-muted">Forgot password?</a>
         </div>
-        <div class="pass-en">
-          <input type="password" placeholder="Password" required />
-          <i class="bx bx-lock-alt"></i>
-        </div>
-        <div class="remember-check">
-          <label> <input type="checkbox" /> Remember me </label>
-          <a href="#">Forgot password?</a>
-        </div>
-        <button type="submit" class="btn">Login</button>
-        <p>Don't have an account? <a href="#"> Register here</a></p>
+
+        <button type="submit" class="btn-primary">Sign In</button>
+        <p class="switch-line">Don't have an account? <a href="signup.html">Sign up</a></p>
       </form>
+
+      <div class="success-state" hidden>
+        <div class="success-icon">✓</div>
+        <h2>Welcome back!</h2>
+        <p>You're signed in. (This is a UI demo — no account was actually created or checked.)</p>
+        <button type="button" class="btn-ghost js-reset">Back to form</button>
+      </div>
     </div>
-  </body>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
 </html>
